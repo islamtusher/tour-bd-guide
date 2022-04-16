@@ -8,6 +8,8 @@ import Contact from './pages/contact/Contact';
 import Header from './pages/home/components/header/Header';
 import Home from './pages/home/components/home/Home';
 import Services from './pages/home/components/services/Services';
+import Login from './pages/login/Login';
+import Signup from './pages/signup/Signup';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
       </Routes>
     </div>

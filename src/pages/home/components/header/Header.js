@@ -6,9 +6,12 @@ import CustomLink from './customLink/CustomLink';
 
 
 const Header = () => {
+    const bgChange = () => {
+        
+    }
     return (
         <div>
-            <Navbar className='nav-contain' expand="lg">
+            <Navbar onScroll={bgChange} className='nav-contain' fixed="top" expand="lg">
                 <Container className='py-3'>
                     <Link className='brand' to={'/'}>Travel BD Guide</Link>
                     <Navbar.Toggle className='bg-light' aria-controls="basic-navbar-nav" />
@@ -19,6 +22,8 @@ const Header = () => {
                             <CustomLink to={'/About'}> About Me</CustomLink>
                             <CustomLink to={'/blogs'}> Blogs</CustomLink>
                             <CustomLink to={'/contact'}> Contact</CustomLink>
+                            <CustomLink to={'/login'}> Login</CustomLink>
+                            <CustomLink to={'/signup'}> Signup</CustomLink>
                         </Nav>   
                     </Navbar.Collapse>
                 </Container>

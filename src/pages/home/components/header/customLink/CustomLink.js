@@ -5,7 +5,7 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 function CustomLink({ children, to }) {
     let resolved = useResolvedPath(to);
     let match = useMatch({ path: resolved.pathname, end: true });
-  
+    console.log(match)
     return (
       <div>
         <Link

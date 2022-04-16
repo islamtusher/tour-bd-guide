@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
 .banner{
     background-image: url('../../../../../public/images/tour-banner.jpg');
     height: 100vh;
@@ -8,5 +8,14 @@
     background-position:right;
     background-size:cover;
     background-attachment: fixed;
-
+}
+.main-title h1{
+    font-size: 70px;
+    font-family: 'Aclonica', sans-serif;
+    color: linear-gradient(90deg, rgba(255,39,8,1) 0%, rgba(255,43,130,1) 100%);
+}
+.sub-title h4{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: rgb(251, 126, 0);
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner from '../banner/Banner';
+import Banner from '../heroArea/Banner';
 
 const Home = () => {
     return (

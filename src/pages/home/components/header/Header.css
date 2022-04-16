@@ -1,1 +1,11 @@
 
+.nav-contain{
+    background: transparent;
+}
+.brand{
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}

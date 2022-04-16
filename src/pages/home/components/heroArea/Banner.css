@@ -2,7 +2,6 @@
 .banner{
     background-image: url('../../../../../public/images/tour-banner.jpg');
     height: 100vh;
-    /* width: 100%; */
     background-repeat: no-repeat;
     background-color: rgba(0,0,0,.6);
     background-blend-mode: overlay;
@@ -10,14 +9,4 @@
     background-size:cover;
     background-attachment: fixed;
 
-}
-.nav-contain{
-    background: transparent;
-}
-.brand{
-    font-family: 'Poppins', sans-serif;
-    font-size: 28px;
-    letter-spacing: 2px;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
 }

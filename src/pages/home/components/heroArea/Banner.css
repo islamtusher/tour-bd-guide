@@ -8,6 +8,7 @@
     background-position:right;
     background-size:cover;
     background-attachment: fixed;
+    position: relative;
 }
 .main-title h1{
     font-size: 70px;
@@ -17,5 +18,47 @@
 .sub-title h4{
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    color: rgb(251, 126, 0);
+    color: rgb(227, 102, 0);
+}
+.banner-buttons{
+    position: absolute;
+    bottom: 50px;
+}
+
+.common-btn{
+    position: relative;
+    overflow: hidden;
+
+    padding: 10px 30px;
+    margin: 0 20px;
+    font-size: 23px;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(255, 255, 255);
+    border-radius: 50px;
+    border: 1px solid rgb(255, 255, 255);
+    background-color:transparent;
+}
+.common-btn::before{
+    content: "";
+    background-color: rgb(132, 247, 255);
+    
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+
+    z-index: -1;
+
+    transition: transform .2s ease-in;
+    transform-origin: left;
+    transform: scaleX(0);
+}
+.common-btn:hover::before{
+    transform: scaleX(1);
+}
+.common-btn{
+    transition: color .2s ease-in;
+    z-index: 1;
+}
+.common-btn:hover{
+    color: rgb(4, 1, 27);
+    cursor: pointer;
 }

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+
+.font{
+    font-family: 'Poppins', sans-serif;
+}
+.section-sub-title{
+    text-align: center;
+    color: rgb(137, 138, 139);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.section-title{
+    font-family: 'Aclonica', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    /* margin: 0px 0px 60px 0; */
+    color: rgb(65, 68, 72);
+}
+.card{
+    width: 90%;
+    border: 0;
+    box-shadow: 5px 5px 20px rgb(205, 204, 204);
+}
+.card-title{
+    font-size: 27px;
+    font-weight: 700;
+    color: rgb(4, 49, 112);
+}
+.card h6{
+    margin: 20px 0;
+    font-size: large;
+    color: rgb(251, 88, 0);
+}
+.card-text{
+    color: rgb(101, 101, 101);
+    height: 100px;
+    text-align: justify;
+}

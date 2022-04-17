@@ -9,7 +9,7 @@ const Banner = () => {
                     <h4>ARE YOU READY FOR NEXT TRIP!</h4>
                 </div>
                 <div className="main-title">
-                    <h1>HERE! GUIDE TO <h1>EXPLORE YOUR TRAVELS</h1></h1>
+                    <h1>HERE! GUIDE TO <br/>EXPLORE YOUR TRAVELS</h1>
                 </div> 
             </div>
             <div className="banner-buttons">

@@ -1,36 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Signup.css';
 import { Button, Form } from 'react-bootstrap';
-import {useSignInWithGoogle} from 'react-firebase-hooks/auth';
+import {useCreateUserWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
 import auth from '../../firebaseConfig';
 
 const Signup = () => {
     const [userInfo, setUserInfo] = useState({name:"", email: "", password: ""})
-    const [userError, setUserError] = useState({emailError: '',passwordError: '', generalError: '' })
+    const [userError, setUserError] = useState({emailError: '', passwordError: '', generalError: '' })
 
-    const [signInWithGoogle, user, , error] = useSignInWithGoogle(auth)
-    
+    // react firebase hooks
+    const [signInWithGoogle] = useSignInWithGoogle(auth)
+    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
 
-    // onChange USER INGO valu ecess
+    // onChange USER input-valu ecess
+    // name
     const getUserName = (e) => {
         const value = e.target.value
         setUserInfo({...userInfo, name:value})
     }
+    // email
     const getUserEmail= (e) => {
         const value = e.target.value
         setUserInfo({...userInfo, email:value})
     }
+    // password 
     const getUserPassword = (e) => {
         const value = e.target.value
-        setUserInfo({...userInfo, password:value})
+        if (value.length < 6) {
+            setUserError({...userError, passwordError: "Too short password"})
+        } else {
+            setUserError({...userError, passwordError: ""})
+            setUserInfo({...userInfo, password:value})
+        }
     }
 
 
     // Form Handler
     const signInFormHandle = (event) => {
         event.preventDefault()
-        console.log(userInfo);
+        createUserWithEmailAndPassword(userInfo.email, userInfo.password)
+        if (error) {
+            alert(error.message)
+            console.log(error.message);
+        }
     }
+    useEffect(() => {
+        console.log(user);
+    },[user])
     return (
         <div  className=' user-form'>
             <Form onSubmit={signInFormHandle}>
@@ -49,10 +65,14 @@ const Signup = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label className='text-light mb-0'>Password</Form.Label>
                     <Form.Control onChange={getUserPassword} type="password" placeholder='Password'  autoComplete='false' />
+                    <Form.Text className="text-muted">
+                        {userError.passwordError && <p className='error'>{userError.passwordError}</p>}    
+                    </Form.Text>
                 </Form.Group>
                 <div className='text-center mb-3'>
                     <Button className='submit-btn' type="submit"> Sign Up </Button>
-               </div>
+                </div>
+                
             </Form>
             <div className='d-flex justify-content-evenly align-items-center text-light'>
                 <hr className='line' />

@@ -18,14 +18,14 @@ const Header = () => {
                     <Navbar.Toggle className='bg-light' aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav ">
                         <Nav className="ms-auto">
-                            {user?.displayName && <p className='text-light'>{user?.displayName}</p>}
+                            {user?.email && <p className='text-dark'>{user?.email}</p>}
                             <CustomLink to={'/'}> Home</CustomLink>
                             <CustomLink to={'/services'}> Services</CustomLink>
                             <CustomLink to={'/About'}> About Me</CustomLink>
                             <CustomLink to={'/blogs'}> Blogs</CustomLink>
                             <CustomLink to={'/contact'}> Contact</CustomLink>
                             {
-                                user?.displayName ?
+                                user?.email ?
                                     <Button onClick={() => signOut(auth)} className='bg-white border-0 pt-0 pe-0 ms-3 text-dark'> LogOut </Button>
                                     :
                                     <CustomLink to={'/login'}> Login </CustomLink>        

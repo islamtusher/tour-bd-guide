@@ -16,6 +16,10 @@
 .user-form .submit-btn:hover{
     background: linear-gradient(90deg,  rgba(0, 21, 38, 0.971) 0%, rgba(2,0,36,1) 100%);
 }
+.error{
+    color: rgb(255, 119, 41);
+    font-size: 20px;
+}
 .line{
     width: 35%;
     padding: 1px 0;

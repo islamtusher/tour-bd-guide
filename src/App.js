@@ -9,6 +9,7 @@ import Header from './pages/home/components/header/Header';
 import Home from './pages/home/components/home/Home';
 import Services from './pages/home/components/services/Services';
 import Login from './pages/login/Login';
+import RequireAuth from './pages/RequirAuth';
 import Signup from './pages/signup/Signup';
 
 function App() {
@@ -19,7 +20,12 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/services' element={<Services></Services>}></Route>
-        <Route path='/about' element={<About></About>}></Route>
+        <Route path='/about' element={
+          <RequireAuth>
+            <About></About>
+          </RequireAuth>}
+        >
+        </Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>

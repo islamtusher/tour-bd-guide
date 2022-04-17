@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import {useSignInWithGoogle} from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebaseConfig';
 
 const Login = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
+
+    // react firebase hooks
     const [signInWithGoogle, user, , error] = useSignInWithGoogle(auth)
+
+    // redirect page
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true })
+        }
+    }, [user])
+    
     return (
         <div  className=' user-form'>
         <Form >

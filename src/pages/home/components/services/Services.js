@@ -16,8 +16,8 @@ const Services = () => {
                 <p className='section-sub-title'>BOOK WITH OFFERS</p>
                 <h1 className='section-title'>POPULAR DESTINATION</h1>
             </div>
-            <Row xs={1} md={3} className="gy-5">
-                {services.map(service => <Service key={service.id} service={service}> </Service>)}
+            <Row xs={1} md={2} lg={3} className="gy-5">
+                {services.map(service => <Service key={service._id} service={service}> </Service>)}
             </Row>
         </Container>
     );

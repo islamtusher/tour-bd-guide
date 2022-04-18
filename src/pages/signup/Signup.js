@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import './Signup.css';
 import { Button, Form } from 'react-bootstrap';
-import {useCreateUserWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
+import {useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
 import auth from '../../firebaseConfig';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const [userInfo, setUserInfo] = useState({name:"", email: "", password: ""})
     const [userError, setUserError] = useState({emailError: '', passwordError: '', generalError: '' })
+    const [user] = useAuthState(auth)
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
 
     // react firebase hooks
-    const [signInWithGoogle] = useSignInWithGoogle(auth)
-    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+    const [signInWithGoogle, , , googleSigninError] = useSignInWithGoogle(auth)
+    const [createUserWithEmailAndPassword, , , userCreateError] = useCreateUserWithEmailAndPassword(auth);
+
+    // redirect page
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true })
+        }
+    }, [user])
 
     // onChange USER input-valu ecess
     // name
@@ -18,53 +30,81 @@ const Signup = () => {
         const value = e.target.value
         setUserInfo({...userInfo, name:value})
     }
-    // email
-    const getUserEmail= (e) => {
+    // email and validation
+    const getUserEmail = (e) => {
         const value = e.target.value
-        setUserInfo({...userInfo, email:value})
+        if (/\S+@\S+\.\S+/.test(value)) {
+            setUserInfo({ ...userInfo, email: value })
+            setUserError({ ...userError, emailError: "" })
+        }
+        else {
+            setUserError({...userError, emailError: "Invalid Email!"})
+        }
     }
-    // password 
+    // password and validation
     const getUserPassword = (e) => {
         const value = e.target.value
+        if (!/(?=.*[!@#$%^&*])/.test(value)) {
+            setUserError({ ...userError, passwordError: "Must contain al-least 1 Special character" })
+            return
+        }
         if (value.length < 6) {
-            setUserError({...userError, passwordError: "Too short password"})
-        } else {
-            setUserError({...userError, passwordError: ""})
+            setUserError({ ...userError, passwordError: "Password should 6 Digit" })
+            return
+        }
+        else {
             setUserInfo({...userInfo, password:value})
+            setUserError({...userError, passwordError: ""})
         }
     }
 
-
-    // Form Handler
+    // signUp Form Handler
     const signInFormHandle = (event) => {
         event.preventDefault()
         createUserWithEmailAndPassword(userInfo.email, userInfo.password)
-        if (error) {
-            alert(error.message)
-            console.log(error.message);
-        }
     }
+
+    // login hooks error handling
     useEffect(() => {
-        console.log(user);
-    },[user])
+        const hooksError = googleSigninError || userCreateError
+        if (hooksError) {
+            switch (hooksError?.code) {
+                case "auth/invalid-email":
+                    alert('Please enter a valid email')
+                    console.log(hooksError?.code);
+                    break;
+                case "auth/email-already-in-use":
+                    alert('This Email Already in used')
+                    console.log(hooksError?.code);
+                    break;
+                default:
+                    alert('Something Worng Please Chack!')
+            }
+        }
+    }, [googleSigninError, userCreateError])
+
+    useEffect(() => {
+        console.log(userCreateError);
+    }, [userCreateError])
+    
     return (
         <div  className=' user-form'>
             <Form onSubmit={signInFormHandle}>
                 <Form.Group className="mb-3" controlId="formBasicText">
                     <Form.Label className='text-light mb-0'>Name</Form.Label>
-                    <Form.Control onChange={getUserName} className='input-fild' placeholder='Name' type="text"  />
+                    <Form.Control onChange={getUserName} className='input-fild' placeholder='Name' type="text" required  />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className='text-light mb-0'>Email</Form.Label>
-                    <Form.Control onChange={getUserEmail}  className='' placeholder='Email' type="email"  />
+                    <Form.Control onChange={getUserEmail}  className='' placeholder='Email' type="email" required  />
                     <Form.Text className="text-muted">
-                        
+                        {userError.emailError && <p className='error'>{userError.emailError}</p>}    
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label className='text-light mb-0'>Password</Form.Label>
-                    <Form.Control onChange={getUserPassword} type="password" placeholder='Password'  autoComplete='false' />
+                    <Form.Control onChange={getUserPassword} type="password" placeholder='Password' required  autoComplete='false' />
                     <Form.Text className="text-muted">
                         {userError.passwordError && <p className='error'>{userError.passwordError}</p>}    
                     </Form.Text>

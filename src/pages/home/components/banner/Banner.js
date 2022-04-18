@@ -12,8 +12,8 @@ const Banner = () => {
                     <h1>HERE! GUIDE TO <br/>EXPLORE YOUR TRAVELS</h1>
                 </div> 
             </div>
-            <div className="banner-buttons">
-                <button className='common-btn' type="submit">Book Now</button>
+            <div className="banner-buttons ">
+                <button className='common-btn mb-3' type="submit">Book Now</button>
                 <button className='common-btn' type="submit">Find Tour</button>
             </div>
         </div>

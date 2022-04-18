@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import {useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
+import {useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebaseConfig';
 
@@ -17,7 +17,9 @@ const Login = () => {
     // react firebase hooks
     const [signInWithGoogle, , , googleSigninError] = useSignInWithGoogle(auth)
     const [signInWithEmailAndPassword, , ,emailSigninError] = useSignInWithEmailAndPassword(auth);
-
+    const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(
+        auth
+      );
     // redirect page
     useEffect(() => {
         if (user) {
@@ -90,7 +92,8 @@ const Login = () => {
                 
             <div className='text-center mb-3'>
                 <Button  className='submit-btn' type="submit"> Login </Button>
-           </div>
+            </div>
+            <p onClick={()=>sendPasswordResetEmail(userInfo.email)} className='text-white'>Forget Password?</p>
         </Form>
         <div className='d-flex justify-content-evenly align-items-center text-light'>
             <hr className='line' />

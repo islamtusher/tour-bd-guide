@@ -9,6 +9,10 @@
     background-size:cover;
     background-attachment: fixed;
     position: relative;
+    /* padding: 400px 0px; */
+}
+.title{
+    
 }
 .main-title h1{
     font-size: 70px;
@@ -61,4 +65,9 @@
 .common-btn:hover{
     color: rgb(4, 1, 27);
     cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+    .banner{
+        padding: 400px 10px;
+    }
 }

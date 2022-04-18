@@ -1,8 +1,10 @@
 import React from 'react';
 import './Service.css'
 import { Card, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Service = ({ service }) => {
+    const navigate = useNavigate()
     const {name, picture, price, describe} = service
     return (
         <Col className='d-flex justify-content-center'>
@@ -14,7 +16,7 @@ const Service = ({ service }) => {
                     <Card.Text className='font card-text'>{describe}</Card.Text>
                 </Card.Body>
                 <Card.Footer className='d-flex justify-content-center align-items-center bg-white border-0 mt-3'>
-                    <button className='common-btn' style={{'border': '1px solid black', 'color': 'black'}} type="submit">Details</button>
+                    <button onClick={()=>navigate('/checkout')} className='common-btn' style={{'border': '1px solid black', 'color': 'black'}} type="submit">Details</button>
                 </Card.Footer>
             </Card>
         </Col>

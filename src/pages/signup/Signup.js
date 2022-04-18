@@ -16,7 +16,7 @@ const Signup = () => {
 
     // react firebase hooks
     const [signInWithGoogle, , , googleSigninError] = useSignInWithGoogle(auth)
-    const [createUserWithEmailAndPassword, , , userCreateError] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, , , userCreateError] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification : true});
 
     // redirect page
     useEffect(() => {

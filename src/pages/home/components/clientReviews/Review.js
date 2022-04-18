@@ -6,7 +6,7 @@ const Review = ({ review }) => {
     return (
         
         <Col className='d-flex justify-content-center'>
-            <Card className='h-100 card py-4'>
+            <Card className='h-100 card py-5'>
                 <div className='d-flex align-items-center ms-4'>
                     <Card.Img src={picture} className='w-25 rounded-circle' alt="Card image" />
                     <div className='d-flex flex-column ms-3' >

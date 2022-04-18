@@ -4,6 +4,7 @@ import './App.css';
 import PageNotFound from './pages/404-page/PageNotFound';
 import About from './pages/about/About';
 import Blogs from './pages/blogs/Blogs';
+import Checkout from './pages/checkout/Checkout';
 import Contact from './pages/contact/Contact';
 import Header from './pages/home/components/header/Header';
 import Home from './pages/home/components/home/Home';
@@ -23,6 +24,12 @@ function App() {
         <Route path='/about' element={
           <RequireAuth>
             <About></About>
+          </RequireAuth>}
+        >
+        </Route>
+        <Route path='/checkout' element={
+          <RequireAuth>
+             <Checkout></Checkout>
           </RequireAuth>}
         >
         </Route>

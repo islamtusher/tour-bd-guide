@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import {useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebaseConfig';
 
 const Login = () => {
@@ -45,7 +43,7 @@ const Login = () => {
         signInWithEmailAndPassword( userInfo?.email, userInfo?.password)
     }
 
-    // login error handling
+    // login hooks error handling
     useEffect(() => {
         const hooksError = googleSigninError || emailSigninError
         if (hooksError) {
@@ -72,7 +70,7 @@ const Login = () => {
 
     console.log(emailSigninError?.code);
     return (
-        <div className=' user-form'>
+        <div id='login' className=' user-form'>
         <Form onSubmit={emailAndPasswordLogin}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className='text-light mb-0'>Email</Form.Label>

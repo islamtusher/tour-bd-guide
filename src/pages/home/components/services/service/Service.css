@@ -4,6 +4,9 @@
 .font{
     font-family: 'Poppins', sans-serif;
 }
+.titles{
+    margin: 100px 0 70px 0;
+}
 .section-sub-title{
     text-align: center;
     color: rgb(137, 138, 139);

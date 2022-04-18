@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Services.css'
-import { Container, Row } from 'react-bootstrap';
 import Service from './service/Service';
+import { Row, Container } from 'react-bootstrap';
 
 const Services = () => {
     const [services, setServices] = useState([])
@@ -11,8 +11,8 @@ const Services = () => {
             .then(data => setServices(data))
     }, [])
     return (
-        <Container className='services'>
-            <div className='my-5'>
+        <Container id='service' className='services'>
+            <div className='titles'>
                 <p className='section-sub-title'>BOOK WITH OFFERS</p>
                 <h1 className='section-title'>POPULAR DESTINATION</h1>
             </div>

@@ -1,0 +1,23 @@
+[
+    {
+      "_id": "625bdfec87a5e997536cf884",
+      "picture": "./images/per1.jpg",
+      "name": "Josep Pitter",
+      "country": "London",
+      "describe": " Excellent! Very good service from beginning to end. Even with a COVID-related delay in the middle of it, Lisa stayed in contact with us and got us a reschedule with the utmost of ease. Thank you!"
+    },
+    {
+      "_id": "625bdfec037fe161784a93fa",
+      "picture": "./images/per2.jpg",
+      "name": "Shadat Hossin",
+      "country": "Bngladesh",
+      "describe": "That was extremely helpful ! Any questions we had were answered very quickly via email or phone call. Not my first time using The BD Guide online and definitely NOT my last"
+    },
+    {
+      "_id": "625bdfec6766094e349e4721",
+      "picture": "./images/per3.jpg",
+      "name": "Abdullah Joni",
+      "country": "Bngladesh",
+      "describe": "Travet BD has a great feature to deal with. Everything was very simple, professional and we were given all the information we required.Thank you for the great service"
+    }
+  ]

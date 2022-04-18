@@ -13,12 +13,12 @@ const Header = () => {
     return (
         <div>
             <Navbar className='nav-contain' fixed="top" expand="lg">
-                <Container className='py-3'>
+                <Container className='py-3 '>
                     <Link className='brand' to={'/'}>Travel BD Guide</Link>
                     <Navbar.Toggle className='bg-light' aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav ">
-                        <Nav className="ms-auto">
-                            {user?.email && <p className='text-dark'>{user?.email}</p>}
+                        <Nav className="ms-auto d-flex align-items-center">
+                            {user?.email && <p className='text-warning m-0'>{user?.email}</p>}
                             <CustomLink to={'/'}> Home</CustomLink>
                             <CustomLink to={'/services'}> Services</CustomLink>
                             <CustomLink to={'/About'}> About Me</CustomLink>
@@ -26,11 +26,13 @@ const Header = () => {
                             <CustomLink to={'/contact'}> Contact</CustomLink>
                             {
                                 user?.email ?
-                                    <Button onClick={() => signOut(auth)} className='bg-white border-0 pt-0 pe-0 ms-3 text-dark'> LogOut </Button>
+                                    <Button onClick={()=>signOut(auth)} className='bg-white py-1 px-2 border-0 ms-3 text-dark'> LogOut </Button>
                                     :
-                                    <CustomLink to={'/login'}> Login </CustomLink>        
+                                    <>
+                                        <CustomLink to={'/login'}> Login </CustomLink>        
+                                        <CustomLink to={'/signup'}> Signup</CustomLink>
+                                    </>
                             }
-                            <CustomLink to={'/signup'}> Signup</CustomLink>
                         </Nav>   
                     </Navbar.Collapse>
                 </Container>

@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Signup = () => {
     const [userInfo, setUserInfo] = useState({name:"", email: "", password: ""})
     const [userError, setUserError] = useState({emailError: '', passwordError: '', generalError: '' })
+   
     const [user] = useAuthState(auth)
     const navigate = useNavigate()
     const location = useLocation()
@@ -20,11 +21,12 @@ const Signup = () => {
     // redirect page
     useEffect(() => {
         if (user) {
-            navigate(from, { replace: true })
+            navigate('/')
+            // navigate(from, { replace: true })
         }
     }, [user])
 
-    // onChange USER input-valu ecess
+    // onChange input-valu ecess
     // name
     const getUserName = (e) => {
         const value = e.target.value
@@ -71,11 +73,9 @@ const Signup = () => {
             switch (hooksError?.code) {
                 case "auth/invalid-email":
                     alert('Please enter a valid email')
-                    console.log(hooksError?.code);
                     break;
                 case "auth/email-already-in-use":
                     alert('This Email Already in used')
-                    console.log(hooksError?.code);
                     break;
                 default:
                     alert('Something Worng Please Chack!')
@@ -83,12 +83,8 @@ const Signup = () => {
         }
     }, [googleSigninError, userCreateError])
 
-    useEffect(() => {
-        console.log(userCreateError);
-    }, [userCreateError])
-    
     return (
-        <div  className=' user-form'>
+        <div id='signup' className=' user-form'>
             <Form onSubmit={signInFormHandle}>
                 <Form.Group className="mb-3" controlId="formBasicText">
                     <Form.Label className='text-light mb-0'>Name</Form.Label>

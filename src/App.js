@@ -10,6 +10,7 @@ import Header from './pages/home/components/header/Header';
 import Home from './pages/home/components/home/Home';
 import Services from './pages/home/components/services/Services';
 import Login from './pages/login/Login';
+import ManageServices from './pages/manageServices/ManageServices';
 import RequireAuth from './pages/RequirAuth';
 import Signup from './pages/signup/Signup';
 
@@ -24,14 +25,17 @@ function App() {
         <Route path='/about' element={
           <RequireAuth>
             <About></About>
-          </RequireAuth>}
-        >
+          </RequireAuth>}>
         </Route>
         <Route path='/checkout' element={
           <RequireAuth>
              <Checkout></Checkout>
-          </RequireAuth>}
-        >
+          </RequireAuth>}>
+        </Route>
+        <Route path='/manageservices' element={
+          <RequireAuth>
+             <ManageServices></ManageServices>
+          </RequireAuth>}>
         </Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>

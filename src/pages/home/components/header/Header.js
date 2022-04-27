@@ -21,6 +21,7 @@ const Header = () => {
                             {user?.email && <p className='text-warning m-0'>{user?.email}</p>}
                             <CustomLink to={'/'}> Home</CustomLink>
                             <CustomLink to={'/services'}> Services</CustomLink>
+                            <CustomLink to={'/manageservices'}> Manage-S</CustomLink>
                             <CustomLink to={'/About'}> About Me</CustomLink>
                             <CustomLink to={'/blogs'}> Blogs</CustomLink>
                             <CustomLink to={'/contact'}> Contact</CustomLink>

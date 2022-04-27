@@ -12,7 +12,8 @@ const ManageServices = () => {
             .then(data => {
                 console.log(data)
                 if (data.deletedCount === 1) {
-                    console.log("data delted");
+                    const filterServices = services.filter(service => service._id !== id)
+                    setServices(filterServices)
                 } else {
                     console.log("No documents matched the query. Deleted 0 documents.");
                 }  

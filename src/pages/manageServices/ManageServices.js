@@ -4,6 +4,7 @@ import useServices from '../customHooks/useServices';
 
 const ManageServices = () => {
     const [services, setServices] = useServices()
+    
     const deleteService = (id) => {
         fetch(`http://localhost:5000/services/${id}`, {
            method: 'DELETE'

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebaseConfig';
@@ -9,7 +9,9 @@ import { Form, Toast } from 'react-bootstrap';
 const Order = () => {
     const [user] = useAuthState(auth)
     const params = useParams()
+    const [userOrders, setUserOrders] = useState()
     const [details] = useSserviceDetails(params._id)
+
 
     const handleOrder = (e) => {
         e.preventDefault()
@@ -26,11 +28,19 @@ const Order = () => {
                 alert('Order Stored')
                 e.target.reset()
             })
-        
     }
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/userorders?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => setUserOrders(data))
+    },[user])
+
     return (
-        <div className='d-flex justify-content-center align-items-center' style={{'height': '100vh'}}>
+        <div className='d-flex justify-content-evenly align-items-center' style={{'height': '100vh'}}>
+            <div>
+                <h3>Stored Orders: {userOrders?.length}</h3>
+            </div>
             <div>
                 <h1>order: {details?.name}</h1>
                 <Form onSubmit={handleOrder}>

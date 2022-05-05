@@ -1,7 +1,7 @@
 
 .nav-contain{
-    background: transparent;
-    /* background-color: rgba(0, 0, 0, 0.554); */
+    /* background: transparent; */
+    background-color: rgba(0, 0, 0, 0.554);
 }
 .brand{
     font-family: 'Poppins', sans-serif;

@@ -11,6 +11,7 @@ import Home from './pages/home/components/home/Home';
 import Services from './pages/home/components/services/Services';
 import Login from './pages/login/Login';
 import ManageServices from './pages/manageServices/ManageServices';
+import Order from './pages/order/Order';
 import RequireAuth from './pages/RequirAuth';
 import Signup from './pages/signup/Signup';
 
@@ -27,7 +28,12 @@ function App() {
             <About></About>
           </RequireAuth>}>
         </Route>
-        <Route path='/checkout' element={
+        <Route path='/order/:_id' element={
+          <RequireAuth>
+             <Order></Order>
+          </RequireAuth>}>
+        </Route>
+        <Route path='/checkout/:_id' element={
           <RequireAuth>
              <Checkout></Checkout>
           </RequireAuth>}>

@@ -27,8 +27,8 @@ const Footer = () => {
                         </Col>
                         <Col className='d-flex align-items-center justify-content-center'>
                             <div className="social-contact d-flex flex-column justify-content-center align-items-center">
-                                <img src="./images/app.png" width="135" height="40" class="img-fluid mb-3 rounded-3 border border-1 border-light" alt="" />
-                                <img src="./images/app2.png" width="135" height="40" class="img-fluid rounded-3 border border-1 border-light" alt="" />
+                                <img src="./images/app.png" width="135" height="40" className="img-fluid mb-3 rounded-3 border border-1 border-light" alt="" />
+                                <img src="./images/app2.png" width="135" height="40" className="img-fluid rounded-3 border border-1 border-light" alt="" />
                             </div>
                         </Col>
                         <Col className='d-flex align-items-center justify-content-center'>
